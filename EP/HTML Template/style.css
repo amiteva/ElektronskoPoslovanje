@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap");
+button, button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.font-primary {
+  font-family: "Montserrat", cursive;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+.color-primary {
+  color: #003859;
+}
+
+.color-primary-bg {
+  background: #003859;
+}
+
+.color-secondary {
+  color: #00A5C4;
+}
+
+.color-secondary-bg {
+  background: #00A5C4;
+}
+
+.color-yellow {
+  color: #FFD289;
+}
+
+.color-yellow-bg {
+  background: #FFD289;
+}
+
+#best-selling .owl-carousel .item .product a {
+  overflow: hidden;
+}
+#best-selling .owl-carousel .item .product img {
+  transition: transform 0.5s ease;
+}
+#best-selling .owl-carousel .item .product img:hover {
+  transform: scale(1.1);
+}
+#best-selling .owl-carousel .owl-nav button {
+  position: absolute;
+  top: 30%;
+  outline: none;
+}
+#best-selling .owl-carousel .owl-nav button.owl-prev {
+  left: 0;
+  font-size: 35px;
+  color: #003859;
+}
+#best-selling .owl-carousel .owl-nav button.owl-prev span,
+#best-selling .owl-carousel .owl-nav button.owl-next span {
+  font-size: 35px;
+  color: #003859;
+  padding: 0 1rem;
+}
+#best-selling .owl-carousel .owl-nav button.owl-next {
+  right: 0;
+  font-size: 35px;
+  color: #003859;
+}
+#best-selling .owl-carousel .owl-nav button.owl-prev span {
+  margin-left: -4rem;
+}
+#best-selling .owl-carousel .owl-nav button.owl-next span {
+  margin-right: -4rem;
+}
+
+/*# sourceMappingURL=style.css.map */
