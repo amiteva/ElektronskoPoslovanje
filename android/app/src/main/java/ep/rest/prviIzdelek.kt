@@ -33,8 +33,17 @@ class prviIzdelek : AppCompatActivity() {
         naslov.text = ime
         cenica.text = "Cena izdelka je " + cena + "e"
 
+        // Nazaj:
         btnNazaj.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Kosarica:
+        btnKosarica.setOnClickListener{
+            val intent = Intent(this, KolikoActivity::class.java)
+            intent.putExtra("cena1", cena)
+            intent.putExtra("ime1", ime)
             startActivity(intent)
         }
     }

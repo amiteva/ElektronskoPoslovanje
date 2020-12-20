@@ -43,6 +43,13 @@ class MainActivity : AppCompatActivity(), Callback<List<Izdelek>> {
         val prijava = "Prijavi se"
         btnPrijava.text = prijava
 
+        // Moj profil:
+        btnPodatki.isEnabled = false
+        btnPodatki.setOnClickListener{
+            val intent = Intent(this, mojiPodatkiActivity::class.java)
+            startActivity(intent)
+        }
+
         container.setOnRefreshListener { IzdelekService.instance.getAll().enqueue(this) }
 
         IzdelekService.instance.getAll().enqueue(this)
@@ -67,10 +74,12 @@ class MainActivity : AppCompatActivity(), Callback<List<Izdelek>> {
         container.isRefreshing = false
 
         // Gumb prijava/odjava
-        val novi = intent.getStringExtra("odjava")
+        val novi2 = "Odjavi se"
         val ali = intent.getIntExtra("ali", 0)
-        if( ali == 1) {
-            btnPrijava.text = novi
+        val ali2 = intent.getIntExtra("ali2", 0)
+        if( ali == 1 || ali2 == 1) {
+            btnPrijava.text = novi2
+            btnPodatki.isEnabled = true
         }
     }
 

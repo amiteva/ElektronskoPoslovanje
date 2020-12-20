@@ -23,7 +23,6 @@ class prijavaActivity : AppCompatActivity() {
 
         val uporabnik = findViewById<TextView>(R.id.ime)
         val geslo = findViewById<TextView>(R.id.geslo)
-        val info = findViewById<TextView>(R.id.poskusi)
 
         btnLogin.setOnClickListener{
             validate(uporabnik.text.toString(), geslo.text.toString())

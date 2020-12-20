@@ -11,7 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".prijavaActivity"></activity>
+        <activity android:name=".zakljucekActivity"></activity>
+        <activity android:name=".KolikoActivity" />
+        <activity android:name=".Koliko" />
+        <activity android:name=".KosaricaActivity" />
+        <activity android:name=".mojiPodatkiActivity" />
+        <activity android:name=".prijavaActivity" />
         <activity android:name=".prviIzdelek" />
         <activity android:name=".MainActivity">
             <intent-filter>
