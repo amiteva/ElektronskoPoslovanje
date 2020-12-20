@@ -14,12 +14,12 @@
         .form-control, .btn {
             border-radius: 3px;
         }
-        .signup-form {
+        .addSeller-form {
             width: 400px;
             margin: 0 auto;
             padding: 30px 0;
         }
-        .signup-form form {
+        .addSeller-form form {
             color: #999;
             border-radius: 3px;
             margin-bottom: 15px;
@@ -27,60 +27,60 @@
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
             padding: 30px;
         }
-        .signup-form h2 {
+        .addSeller-form h2 {
             color: #333;
             font-weight: bold;
             margin-top: 0;
         }
-        .signup-form hr {
+        .addSeller-form hr {
             margin: 0 -30px 20px;
         }
-        .signup-form .form-group {
+        .addSeller-form .form-group {
             margin-bottom: 20px;
         }
-        .signup-form label {
+        .addSeller-form label {
             font-weight: normal;
             font-size: 14px;
         }
-        .signup-form .form-control {
+        .addSeller-form .form-control {
             min-height: 38px;
             box-shadow: none !important;
         }
-        .signup-form .input-group-addon {
+        .addSeller-form .input-group-addon {
             max-width: 42px;
             text-align: center;
         }
-        .signup-form .btn, .signup-form .btn:active {
+        .addSeller-form .btn, .signup-form .btn:active {
             font-size: 16px;
             font-weight: bold;
             background: #003859 !important;
             border: none;
             min-width: 140px;
         }
-        .signup-form .btn:hover, .signup-form .btn:focus {
+        .addSeller-form .btn:hover, .signup-form .btn:focus {
             background: #003859 !important;
         }
-        .signup-form a {
+        .addSeller-form a {
             color: #fff;
             text-decoration: underline;
         }
-        .signup-form a:hover {
+        .addSeller-form a:hover {
             text-decoration: none;
         }
-        .signup-form form a {
+        .addSeller-form form a {
             color: #003859;
             text-decoration: none;
         }
-        .signup-form form a:hover {
+        .addSeller-form form a:hover {
             text-decoration: underline;
         }
-        .signup-form .fa {
+        .addSeller-form .fa {
             font-size: 21px;
         }
-        .signup-form .fa-paper-plane {
+        .addSeller-form .fa-paper-plane {
             font-size: 18px;
         }
-        .signup-form .fa-check {
+        .addSeller-form .fa-check {
             color: #fff;
             left: 17px;
             top: 18px;
@@ -90,10 +90,10 @@
     </style>
 
 
-    <div class="signup-form">
-        <form action="Template/includes/signup.inc.php" method="post">
-            <h2>Sign Up</h2>
-            <p style="font-size: 14px; ">Please fill in this form to create an account!</p>
+    <div class="addSeller-form">
+        <form action="Template/includes/add-seller.inc.php" method="post">
+            <h2>Add a new seller</h2>
+            <p style="font-size: 14px; ">Please fill in the blanks to add a new seller!</p>
             <hr>
             <div class="form-group">
                 <div class="input-group">
@@ -147,10 +147,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" name="submit" class="btn btn-primary btn-lg">Sign Up</button>
+                <button type="submit" name="submit" class="btn btn-primary btn-lg">Add</button>
             </div>
         </form>
-        <div class="text-center" style="color: #333333">Already have an account? <a href="./login.php" style="color: #00A5C4;">Login here</a></div>
         <div class="text-center" style="color: red">
             <?php
             if(isset($_GET["error"])){
@@ -158,7 +157,7 @@
                     echo "<p>Fill in all fields</p>";
                 }
                 else if($_GET["error"] == "invaliduid"){
-                    echo "<p>Make sure your username consists of only letters and numbers</p>";
+                    echo "<p>Make sure the username consists of only letters and numbers</p>";
                 }
                 else if($_GET["error"] == "passwordsdontmatch"){
                     echo "<p>Passwords don't match</p>";
@@ -170,7 +169,7 @@
                     echo "<p>Username or Email already taken</p>";
                 }
                 else if($_GET["error"] == "none"){
-                    echo "<p>You have signed up</p>";
+                    echo "<p>You have successfully added a new seller</p>";
                 }
             }
             ?>

@@ -87,90 +87,81 @@
             font-size: 7px;
             position: absolute;
         }
+        .sellerAddProduct-form .fa-cog {
+            font-size: 18px;
+        }
     </style>
 
 
     <div class="signup-form">
-        <form action="Template/includes/signup.inc.php" method="post">
-            <h2>Sign Up</h2>
-            <p style="font-size: 14px; ">Please fill in this form to create an account!</p>
+        <form action="Template/includes/add-product.inc.php" method="post">
+            <h2>Add a new product</h2>
+            <p style="font-size: 14px; ">Please fill in this form to add a new product!</p>
             <hr>
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
 					<span class="input-group-text">
-						<span class="fa fa-portrait"></span>
+						<span class="fa fa-cog"></span>
 					</span>
                     </div>
-                    <input type="text" class="form-control" name="name" placeholder="Full Name" required="required">
+                    <input type="text" class="form-control" name="name" placeholder="Name of the product" required="required">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa fa-paper-plane"></i>
+						<i class="fa fa-cog"></i>
 					</span>
                     </div>
-                    <input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
+                    <input type="text" class="form-control" name="brand" placeholder="Brand of the product" required="required">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
 					<span class="input-group-text">
-						<span class="fa fa-user"></span>
+						<span class="fa fa-cog"></span>
 					</span>
                     </div>
-                    <input type="text" class="form-control" name="uid" placeholder="Username" required="required">
+                    <input type="number" step="0.01" class="form-control" name="price" placeholder="Price of the product" required="required">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa fa-lock"></i>
+						<i class="fa fa-cog"></i>
 					</span>
                     </div>
-                    <input type="password" class="form-control" name="pwd" placeholder="Password" required="required">
+                    <input type="number" step="0.01" class="form-control" name="msrp" placeholder="MSRP" required="required">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fa fa-lock"></i>
-						<i class="fa fa-check"></i>
+						<i class="fa fa-cog"></i>
 					</span>
                     </div>
-                    <input type="password" class="form-control" name="pwdrepeat" placeholder="Confirm Password" required="required">
+                    <input type=text" class="form-control" name="description" placeholder="Description of the product" required="required">
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" name="submit" class="btn btn-primary btn-lg">Sign Up</button>
+                <button type="submit" name="submit" class="btn btn-primary btn-lg">Add product</button>
             </div>
         </form>
-        <div class="text-center" style="color: #333333">Already have an account? <a href="./login.php" style="color: #00A5C4;">Login here</a></div>
-        <div class="text-center" style="color: red">
             <?php
             if(isset($_GET["error"])){
                 if($_GET["error"] == "emptyinput"){
                     echo "<p>Fill in all fields</p>";
                 }
-                else if($_GET["error"] == "invaliduid"){
-                    echo "<p>Make sure your username consists of only letters and numbers</p>";
-                }
-                else if($_GET["error"] == "passwordsdontmatch"){
-                    echo "<p>Passwords don't match</p>";
-                }
                 else if($_GET["error"] == "stmtfailed"){
                     echo "<p>Ups. Something went wrong</p>";
                 }
-                else if($_GET["error"] == "usernametaken"){
-                    echo "<p>Username or Email already taken</p>";
-                }
                 else if($_GET["error"] == "none"){
-                    echo "<p>You have signed up</p>";
+                    echo "<p>You have added the product!</p>";
                 }
             }
             ?>

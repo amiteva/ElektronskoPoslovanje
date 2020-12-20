@@ -12,15 +12,15 @@ CREATE TABLE `cart` (
 
 
 CREATE TABLE `product` (
-    `item_id` int(11) NOT NULL,
+    `item_id` int(11) AUTO_INCREMENT NOT NULL,
     `item_brand` varchar(200) NOT NULL,
     `item_name` varchar(255) NOT NULL,
     `item_price` double(10,2) NOT NULL,
     `item_msrp` double(10,2) NOT NULL,
-    `item_rating` int(11) NOT NULL,
-    `item_nr` int(11) NOT NULL,
+    `item_rating` int(11) NOT NULL DEFAULT 0,
+    `item_nr` int(11) NOT NULL DEFAULT 0,
     `item_image` varchar(255) NOT NULL,
-    `item_register` datetime DEFAULT NULL,
+    `item_register` datetime DEFAULT NOW(),
     `item_desc` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -45,14 +45,19 @@ INSERT INTO `product` (`item_id`, `item_brand`, `item_name`, `item_price`, `item
 
 CREATE TABLE `users` (
     `usersId` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    `usersName` varchar(128) NOT NULL,
-    `usersEmail` varchar(128) NOT NULL,
+    `usersName` varchar(128) UNIQUE NOT NULL,
+    `usersEmail` varchar(128) UNIQUE NOT NULL,
     `usersUid` varchar(128) NOT NULL,
-    `usersPwd` varchar(128) NOT NULL
+    `usersPwd` varchar(128) NOT NULL,
+    `userStatus` int(11) NOT NULL DEFAULT 1, /*0-innactive, 1-active*/
+    `userRole` int(11) NOT NULL /*0-admin, 1-prodajalec, 2-stranka, 3-guest*/
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `users` (`usersId`, `usersName`, `usersEmail`, `usersUid`, `usersPwd`) VALUES
-(1, 'guest', 'none', 'Guest', 'none');
+INSERT INTO `users` (`usersId`, `usersName`, `usersEmail`, `usersUid`, `usersPwd`, `userRole`) VALUES
+(1, 'guest', 'none', 'Guest', 'none', 3),
+(2, 'admin', 'admin@gmail.com', 'admin', 'admin', 0);
+
+
 
 CREATE TABLE `wishlist` (
     `cart_id` int(11) NOT NULL,

@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="style.css">
 
     <?php
-        require ('functions.php');
+    require ('functions.php');
     ?>
 
 </head>
@@ -33,45 +33,30 @@
         <p class="font-primary font-size-12 text-black-50">Večna pot 113, 1000 Ljubljana</p>
         <div class="d-flex font-primary font-size-14">
             <?php
-                if (isset($_SESSION["useruid"])){
-                    echo "<p class=\"px-3 border-right text-dark\">Hello ".$_SESSION["useruid"]."</p>";
-                    echo "<a href=\"Template/includes/logout.inc.php\" class=\"px-3 text-dark\">Log Out</a>";
-                }
-                else{
-                    echo "<a href=\"login.php\" class=\"px-3 border-right text-dark\">Log in</a>";
-                    echo "<a href=\"signup.php\" class=\"px-3 text-dark\">Sign Up</a>";
-                }
+                echo "<a href=\"editProfileAdmin.php\" class=\"px-3 text-dark\">Edit profile</a>";
+                echo "<a href=\"Template/includes/logout.inc.php\" class=\"px-3 text-dark\">Log Out</a>";
             ?>
 
         </div>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark color-secondary-bg">
-        <a class="navbar-brand" href="index.php"><i class="fab fa-shopware"></i> EP SHOP</a>
+        <a class="navbar-brand" href="#"><i class="fab fa-shopware"></i> EP SHOP</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav m-auto font-primary">
-
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href='addSeller.php'>Add Seller</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="list.php">Products</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="about.php">About Us</a>
+                    <a class="nav-link" href=#>Edit Sellers</a>
                 </li>
             </ul>
-            <form action="#" class="font-size-14 font-primary">
-                <a href="cart.php" class="py-2 rounded-pill color-primary-bg">
-                    <span class="font-size-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
-                    <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($product ->getData('cart')); ?></span>
-                </a>
-            </form>
         </div>
     </nav>
 </header>
 
-<main id="main-site">
+<main id="main-site-admin">
+
