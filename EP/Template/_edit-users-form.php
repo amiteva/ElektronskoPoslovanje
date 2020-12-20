@@ -89,9 +89,8 @@
         }
     </style>
 
-
-    <div class="signup-form">
-        <form action="Template/includes/signup.inc.php" method="post">
+    <div class="edit-users-form">
+        <form action="Template/includes/edit-users.inc.php" method="post">
             <h2>Sign Up</h2>
             <p style="font-size: 14px; ">Please fill in this form to create an account!</p>
             <hr>
@@ -144,6 +143,18 @@
 					</span>
                     </div>
                     <input type="password" class="form-control" name="pwdrepeat" placeholder="Confirm Password" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+						<i class="fa fa-check"></i>
+					</span>
+                    </div>
+                    <p>Are you a seller?</p>
+                    <input type="number" class="form-control" name="rolecheckbox" placeholder="Seller?" required="required">
                 </div>
             </div>
             <div class="form-group">
