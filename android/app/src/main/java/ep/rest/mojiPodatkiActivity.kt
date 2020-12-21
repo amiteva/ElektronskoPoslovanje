@@ -18,7 +18,6 @@ class mojiPodatkiActivity : AppCompatActivity() {
         val mail = findViewById<TextView>(R.id.mail)
         val geslo = findViewById<TextView>(R.id.password)
 
-        val novoIme = ime.text.toString()
 
         // Nazaj:
         btnBack.setOnClickListener{
@@ -29,13 +28,13 @@ class mojiPodatkiActivity : AppCompatActivity() {
 
         // Shrani:
         button.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            //val intent = Intent(this, MainActivity::class.java)
             // Nove vrednosti:
-            ime.text = novoIme
+            ime.text = ime.text.toString()
             priimek.text = priimek.text.toString()
 
             intent.putExtra("ali2", ali)
-            startActivity(intent)
+            //startActivity(intent)
         }
     }
 }

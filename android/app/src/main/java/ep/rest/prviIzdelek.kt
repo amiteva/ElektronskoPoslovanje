@@ -35,8 +35,7 @@ class prviIzdelek : AppCompatActivity() {
         opis1.text = opis.toString()
         naslov.text = ime
         cenica.text = "Cena izdelka je " + cena + "e"
-        val delaj =
-        slika.setImageResource(R.drawable.slikca)
+        slika.setImageResource(R.drawable.ni)
 
         // Nazaj:
         btnNazaj.setOnClickListener{
