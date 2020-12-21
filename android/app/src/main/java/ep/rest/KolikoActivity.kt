@@ -17,7 +17,7 @@ class KolikoActivity : AppCompatActivity() {
         val izdelek = findViewById<TextView>(R.id.izdelek)
         val koliko = findViewById<TextView>(R.id.koliko)
         val skupna = findViewById<TextView>(R.id.cena1)
-        //val dobimo = 0
+
         val prvi = 1
 
         val cena = intent.getDoubleExtra("cena1", 0.0)
@@ -41,15 +41,11 @@ class KolikoActivity : AppCompatActivity() {
             }
         }
 
-        val prvi1 = koliko.text.toString()
-        val int: Int? = prvi.toInt()
-        val dobimo = int?.let { izracunaj(it, cena) }
-        skupna.text = dobimo.toString() + " EUR"
-
-
-
         // Nadaljujemo:
         btnNadaljuj.setOnClickListener{
+            val prvi1 = koliko.text.toString()
+            val int: Int? = prvi1.toInt()
+            val dobimo = int?.let { izracunaj(it, cena) }
             val intent = Intent(this, KosaricaActivity::class.java)
             intent.putExtra("ime3", kateri)
             intent.putExtra("skupna", dobimo)

@@ -11,7 +11,7 @@ object IzdelekService {
 
         companion object {
             // AVD emulator
-            const val URL = "http://10.0.2.2:8080/netbeans/SHOP/"
+            const val URL = "http://10.0.2.2:8080/netbeans/TRGOVINA/"
         }
 
         @GET("podatki.php")
@@ -19,6 +19,14 @@ object IzdelekService {
 
         @GET("uporabnik.php")
         fun getUPR(): Call<Uporabnik>
+
+        @POST("uporabnik.php")
+        fun update(@Field("ime") ime: String,
+                   @Field("priimek") priimek: String,
+                   @Field("naslov") naslov: String,
+                   @Field("geslo") geslo: String,
+                   @Field("mail") mail: String
+                    ) : Call<Void>
 
     }
 

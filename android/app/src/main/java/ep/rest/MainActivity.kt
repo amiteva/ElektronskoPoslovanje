@@ -30,6 +30,11 @@ class MainActivity : AppCompatActivity(), Callback<List<Izdelek>> {
                 intent.putExtra("opis", podatek.opis)
                 intent.putExtra("naslov", podatek.ime)
                 intent.putExtra("price", podatek.price)
+                // Slika:
+                if(i == 0){
+                    val l = "hlad1"
+                    intent.putExtra("slika", l)
+                }
                 startActivity(intent)
             }
         }
