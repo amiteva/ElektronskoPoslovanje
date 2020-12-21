@@ -146,6 +146,7 @@
                     <input type="password" class="form-control" name="pwdrepeat" placeholder="Confirm Password" required="required">
                 </div>
             </div>
+            <div class="g-recaptcha" data-sitekey="6Lc9ew4aAAAAAIOWO-PxUFatrT4UvpCRXMSIoljk"></div>
             <div class="form-group">
                 <button type="submit" name="submit" class="btn btn-primary btn-lg">Sign Up</button>
             </div>

@@ -39,9 +39,9 @@ class Cart
         }
     }
 
-    public function deleteCart($itemid=null, $table='cart'){
+    public function deleteCart($itemid=null, $table='cart', $userid){
         if($itemid!=null){
-            $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id={$itemid}");
+            $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id={$itemid} AND user_id={$userid}");
             if($result){
                 header("Location:".$_SERVER['PHP_SELF']);
             }

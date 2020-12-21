@@ -22,6 +22,18 @@ class Product
         return $resultArray;
     }
 
+    public function getDataCurrent($table = 'product', $user){
+        $result = $this->db->con->query("SELECT * FROM {$table} WHERE user_id=$user");
+
+        $resultArray = array();
+
+        while($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $item;
+        }
+
+        return $resultArray;
+    }
+
     public function getProduct($item_id = null, $table = 'product'){
         if(isset($item_id)){
             $result = $this->db->con->query("SELECT * FROM {$table} WHERE item_id={$item_id}");

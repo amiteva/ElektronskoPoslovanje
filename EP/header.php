@@ -21,6 +21,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
     <?php
         require ('functions.php');
     ?>
@@ -35,6 +37,7 @@
             <?php
                 if (isset($_SESSION["useruid"])){
                     echo "<p class=\"px-3 border-right text-dark\">Hello ".$_SESSION["useruid"]."</p>";
+                    echo "<a href=\"editProfile.php\" class=\"px-3 text-dark\">Edit profile</a>";
                     echo "<a href=\"Template/includes/logout.inc.php\" class=\"px-3 text-dark\">Log Out</a>";
                 }
                 else{
@@ -67,7 +70,7 @@
             <form action="#" class="font-size-14 font-primary">
                 <a href="cart.php" class="py-2 rounded-pill color-primary-bg">
                     <span class="font-size-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
-                    <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($product ->getData('cart')); ?></span>
+                    <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($product ->getDataCurrent('cart', $_SESSION["userid"] ?? 1)); ?></span>
                 </a>
             </form>
         </div>

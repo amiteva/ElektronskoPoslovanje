@@ -1,7 +1,7 @@
 <?php
     if($_SERVER['REQUEST_METHOD']=='POST'){
         if(isset($_POST['delete-cart-submit'])){
-            $deletedrecord = $Cart->deleteCart($_POST['item_id']);
+            $deletedrecord = $Cart->deleteCart($_POST['item_id'], 'cart', $_SESSION["userid"] ?? 1);
         }
         if(isset($_POST['wishlist-submit'])){
             $Cart->saveForLater($_POST['item_id']);
@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-sm-9">
                 <?php
-                    foreach($product->getData('cart') as $item):
+                    foreach($product ->getDataCurrent('cart', $_SESSION["userid"] ?? 1) as $item):
                         $cart = $product->getProduct($item['item_id']);
                         $subTotal[] = array_map(function ($item){
                 ?>
@@ -72,7 +72,8 @@
                 <div class="sub-total border text-center mt-2">
                     <h6 class="font-primary font-size-12 text-success py-3"><i class="fas fa-check"></i> You order is eligible for free delivery</h6>
                     <div class="border-top py-4">
-                        <h5 class="font-primary font-size-20">Subtotal <?php echo count($subTotal) ?? 0; ?> item(s): &nbsp;<span class="text-danger"><span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $Cart->getSum($subTotal): 0 ?></span> <i class="fas fa-euro-sign"></i></span></h5>
+                        <h5 class="font-primary font-size-20">Subtotal <?php echo isset($subTotal) ? count($subTotal): 0; ?> item(s): &nbsp;<span class="text-danger"><span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $Cart->getSum($subTotal): 0 ?></span> <i class="fas fa-euro-sign"></i></span></h5>
+                        <h5 class="font-primary font-size-20">Subtotal <?php echo isset($subTotal) ? count($subTotal): 0; ?> item(s): &nbsp;<span class="text-danger"><span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $Cart->getSum($subTotal): 0 ?></span> <i class="fas fa-euro-sign"></i></span></h5>
                         <button class="btn btn-warning mt-3">Proceed to buy</button>
                     </div>
                 </div>

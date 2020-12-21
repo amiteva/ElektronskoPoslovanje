@@ -128,6 +128,9 @@
                 else if($_GET["error"] == "wronglogin"){
                     echo "<p>Incorrect Username or Password</p>";
                 }
+                else if($_GET["error"] == "deactivatedaccount"){
+                    echo "<p>Your account is currently deactivated</p>";
+                }
             }
             ?>
         </div>

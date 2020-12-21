@@ -5,14 +5,14 @@ SET time_zone = "+00:00";
 
 
 CREATE TABLE `cart` (
-    `cart_id` int(11) NOT NULL,
+    `cart_id` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     `user_id` int(11) NOT NULL,
     `item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE `product` (
-    `item_id` int(11) AUTO_INCREMENT NOT NULL,
+    `item_id` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     `item_brand` varchar(200) NOT NULL,
     `item_name` varchar(255) NOT NULL,
     `item_price` double(10,2) NOT NULL,
@@ -45,6 +45,7 @@ INSERT INTO `product` (`item_id`, `item_brand`, `item_name`, `item_price`, `item
 
 CREATE TABLE `users` (
     `usersId` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    `cartId` int(11) DEFAULT NULL,
     `usersName` varchar(128) UNIQUE NOT NULL,
     `usersEmail` varchar(128) UNIQUE NOT NULL,
     `usersUid` varchar(128) NOT NULL,
@@ -55,28 +56,36 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`usersId`, `usersName`, `usersEmail`, `usersUid`, `usersPwd`, `userRole`) VALUES
 (1, 'guest', 'none', 'Guest', 'none', 3),
-(2, 'admin', 'admin@gmail.com', 'admin', 'admin', 0);
+(2, 'Admin', 'admin@gmail.com', 'admin', '$2y$10$rjOaypIQknnY0oePKVHtC.lJtjGHbg7lqt1XNYbp8grJkrpC8UCZS', 0),
+(3, 'Seller', 'seller@gmail.com', 'seller', '$2y$10$G.bD/RFCjX/LRronmZCZnOZ73G9DUjZzqhmMH/H4kW.pkDteib4cm', 1),
+(4, 'Customer', 'customer@gmail.com', 'customer', '$2y$10$obIhVhlQuGlF4T2X6RP2CeIZpJpCKmhcOVINOP6humqjVx1qfuNle', 2);
 
 
 
 CREATE TABLE `wishlist` (
     `cart_id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL,
-    `item_id` int(11) NOT NULL
+    `item_id` int(11) NOT NULL,
+    CONSTRAINT `fk_wishlist_users`
+        FOREIGN KEY (user_id) REFERENCES users(usersId)
+        ON DELETE CASCADE
+        ON UPDATE RESTRICT,
+    CONSTRAINT `fk_wishlist_product`
+        FOREIGN KEY (item_id) REFERENCES product(item_id)
+        ON DELETE CASCADE
+        ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `cartItemMatch` (
+     `cart_id` int(11) NOT NULL,
+     `item_id` int(11) NOT NULL,
+     CONSTRAINT `fk_cartItemMatch_users`
+         FOREIGN KEY (cart_id) REFERENCES cart(cart_id)
+         ON DELETE CASCADE
+         ON UPDATE RESTRICT,
+     CONSTRAINT `fk_cartItemMatch_product`
+         FOREIGN KEY (item_id) REFERENCES product(item_id)
+             ON DELETE CASCADE
+             ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-ALTER TABLE `cart`
-    ADD PRIMARY KEY (`cart_id`);
-
-
-ALTER TABLE `product`
-    ADD PRIMARY KEY (`item_id`);
-
-
-ALTER TABLE `cart`
-    MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
-
-
-ALTER TABLE `product`
-    MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
