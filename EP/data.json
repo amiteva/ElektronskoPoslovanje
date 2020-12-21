@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "brand": "Fridge",
+        "ime": "Gorenje RK4181PS4",
+        "price":"356.45",
+        "year": "2018",
+        "opis": "Gorenje kombinirani hladilnik RK4181PS4 ima 198 litrov prostornine hladilnega dela in 66 litrov prostornine zamrzovalnega dela. Uvrsca se v energijski razred A+."
+    },
+    {
+        "id": "2",
+        "brand": "Fridge",
+        "ime": "TESLA RS0905H",
+        "price":"230.34",
+        "year": "2017",
+        "opis": "Tesla prostostojeci hladilnik RS0905H ima 83 litrov prostornine hladilnega dela in 10 litrov prostornine zamrzovalnega predala. Uvrsca se v energijski razred A+."
+    },
+    {
+        "id": "3",
+        "brand": "Oven",
+        "ime": "Bosch HBF153EB0",
+        "price":"213.43",
+        "year": "2016",
+        "opis": "Bosch vgradna pecica je s66 litri prostornine in petimi funkcijami pecenja kos prakticno vsem kuharskim podvigom. Ponasa se z LED zaslonom in ima tri nivoje za pecenje. 3D krozenje zraka omogoca optimalno porazdelitev temperature po vseh nivojih za vedno popolne rezultate pecenja."
+    },
+    {
+        "id": "4",
+        "brand": "Oven",
+        "ime": "Gorenje BO735E20B-2",
+        "price":"360.56",
+        "year": "2019",
+        "opis": "Gorenje vgradna pecica BO735E20B-2 se med drugim ponasa s prostornino 71 litrov, mehanskim upravljanjem in termicnim varovalom za samodejni izklop."
+    },
+    {
+        "id": "5",
+        "brand": "WashingMachine",
+        "ime": "Gorenje WHE62S3",
+        "price":"560.43",
+        "year": "2016",
+        "opis": "Gorenje pralni stroj WHE62S3 ima zmogljivost pranja 6 kg in spada v energijski razred A+++. Ima 15 programov in omogoca nastavitev temperature. Opremljen je s senzorjem teze."
+    },
+    {
+        "id": "6",
+        "brand": "WashingMachine",
+        "ime": "TESLA WF60830M",
+        "price":"354.54",
+        "year": "2015",
+        "opis": "Pralni stroj Tesla WF60830M spada v energijski razred A++ in ima kapaciteto pranja 6,5 kg. Pri ozemanju doseze do 800 obratov na minuto. Ponuja 23 programov, med katerimi so trije namenjeni dnevnemu pranju perila."
+    }
+]
