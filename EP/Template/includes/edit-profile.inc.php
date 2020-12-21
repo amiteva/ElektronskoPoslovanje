@@ -6,6 +6,7 @@ if(isset($_POST["submit"])){
     $username = $_POST["uid"];
     $pwd = $_POST["pwd"];
     $pwdRepeat = $_POST["pwdrepeat"];
+    $userId = $_POST["userID"];
 
 
     require_once 'dbh.inc.php';
@@ -26,15 +27,10 @@ if(isset($_POST["submit"])){
         exit();
     }
 
-    if(uidExists($conn, $username, $email) !== false){
-        header("location: ../../editProfile.php?error=usernametaken");
-        exit();
-    }
-
-    updateUser($conn, $name, $email, $username, $pwd);
+    updateCustomer($conn, $name, $email, $username, $pwd, $userId);
 
 }
 else{
-    header("location: ../../signup.php");
+    header("location: ../../editProfile.php");
     exit();
 }

@@ -33,7 +33,7 @@ session_start();
         <p class="font-primary font-size-12 text-black-50">Večna pot 113, 1000 Ljubljana</p>
         <div class="d-flex font-primary font-size-14">
             <?php
-            echo "<a href=\"editProfile.php\" class=\"px-3 text-dark\">Edit profile</a>";
+            echo "<a href=\"editProfileSeller.php\" class=\"px-3 text-dark\">Edit profile</a>";
             echo "<a href=\"Template/includes/logout.inc.php\" class=\"px-3 text-dark\">Log Out</a>";
             ?>
 
@@ -41,7 +41,7 @@ session_start();
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark color-secondary-bg">
-        <a class="navbar-brand" href="#"><i class="fab fa-shopware"></i> EP SHOP</a>
+        <a class="navbar-brand" href="sellerHome.php"><i class="fab fa-shopware"></i> EP SHOP</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -51,16 +51,16 @@ session_start();
                     <a class="nav-link" href="sellerAddProduct.php">Add Product</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href=#>Edit Products</a>
+                    <a class="nav-link" href="editProductList.php">Edit Products</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href=#>Orders</a>
+                    <a class="nav-link" href="#">Orders</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="addCustomer.php">Add Customer</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href=#>Edit Customers</a>
+                    <a class="nav-link" href="editCustomersList.php">Edit Customers</a>
                 </li>
             </ul>
         </div>

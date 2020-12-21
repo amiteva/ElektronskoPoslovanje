@@ -41,7 +41,7 @@ session_start();
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark color-secondary-bg">
-        <a class="navbar-brand" href="#"><i class="fab fa-shopware"></i> EP SHOP</a>
+        <a class="navbar-brand" href="adminHome.php"><i class="fab fa-shopware"></i> EP SHOP</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -51,7 +51,7 @@ session_start();
                     <a class="nav-link" href='addSeller.php'>Add Seller</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href=#>Edit Sellers</a>
+                    <a class="nav-link" href="editSellersList.php">Edit Sellers</a>
                 </li>
             </ul>
         </div>

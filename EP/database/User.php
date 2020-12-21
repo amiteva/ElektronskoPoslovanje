@@ -10,7 +10,7 @@ class User
         $this->db = $db;
     }
 
-    public function getData($table = 'user'){
+    public function getData($table = 'users'){
         $result = $this->db->con->query("SELECT * FROM {$table}");
 
         $resultArray = array();
@@ -22,14 +22,37 @@ class User
         return $resultArray;
     }
 
-    public function getUser($item_id = null, $table = 'user'){
-        if(isset($item_id)){
-            $result = $this->db->con->query("SELECT * FROM {$table} WHERE user_id={$item_id}");
+    public function getSellers($table = 'users'){
+        $result = $this->db->con->query("SELECT * FROM {$table} WHERE userRole='1'");
+
+        $resultArray = array();
+
+        while($user = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $user;
+        }
+
+        return $resultArray;
+    }
+    public function getCustomers($table = 'users'){
+        $result = $this->db->con->query("SELECT * FROM {$table} WHERE userRole='2'");
+
+        $resultArray = array();
+
+        while($user = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $user;
+        }
+
+        return $resultArray;
+    }
+
+    public function getUser($user_id = null, $table = 'users'){
+        if(isset($user_id)){
+            $result = $this->db->con->query("SELECT * FROM {$table} WHERE user_id={$user_id}");
 
             $resultArray = array();
 
-        while($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-            $resultArray[] = $item;
+        while($user = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $user;
         }
 
         return $resultArray;

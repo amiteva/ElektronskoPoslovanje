@@ -105,7 +105,7 @@
 						<span class="fa fa-portrait"></span>
 					</span>
                     </div>
-                    <input type="text" class="form-control" name="name" placeholder="New Name">
+                    <input type="text" class="form-control" name="name" value="<?php echo $_SESSION['username'] ?>">
                 </div>
             </div>
             <div class="form-group">
@@ -115,7 +115,7 @@
 						<i class="fa fa-paper-plane"></i>
 					</span>
                     </div>
-                    <input type="email" class="form-control" name="email" placeholder="New Email Address" >
+                    <input type="email" class="form-control" name="email" value="<?php echo $_SESSION['useremail'] ?>">
                 </div>
             </div>
             <div class="form-group">
@@ -125,7 +125,7 @@
 						<span class="fa fa-user"></span>
 					</span>
                     </div>
-                    <input type="text" class="form-control" name="uid" placeholder="New Username">
+                    <input type="text" class="form-control" name="uid" value="<?php echo $_SESSION['useruid'] ?>">
                 </div>
             </div>
             <div class="form-group">
@@ -135,7 +135,7 @@
 						<i class="fa fa-lock"></i>
 					</span>
                     </div>
-                    <input type="password" class="form-control" name="pwd" placeholder="New Password">
+                    <input type="password" class="form-control" name="pwd" placeholder="New Password" required="required">
                 </div>
             </div>
             <div class="form-group">
@@ -146,9 +146,10 @@
 						<i class="fa fa-check"></i>
 					</span>
                     </div>
-                    <input type="password" class="form-control" name="pwdrepeat" placeholder="Confirm New Password">
+                    <input type="password" class="form-control" name="pwdrepeat" placeholder="Confirm New Password" required="required">
                 </div>
             </div>
+            <input type="hidden" class="form-control" name="userID" value="<?php echo $_SESSION['userid'] ?>">
             <div class="form-group">
                 <button type="submit" name="submit" class="btn btn-primary btn-lg">Update</button>
             </div>

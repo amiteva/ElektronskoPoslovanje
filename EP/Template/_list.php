@@ -5,13 +5,13 @@ sort($unique);
 shuffle($product_shuffle);
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    if (isset($_POST['special_price_submit'])){
+    if (isset($_POST['top_sale_submit'])){
         // call method addToCart
         $Cart->addToCart($_POST['user_id'], $_POST['item_id']);
     }
 }
 
-$in_cart = $Cart->getCartId($product->getData('cart'));
+$in_cart = $Cart->getCartId($product ->getDataCurrent('cart', $_SESSION["userid"] ?? 1));
 
 ?>
 <section id="list-product" class="mb-4">
@@ -52,6 +52,8 @@ $in_cart = $Cart->getCartId($product->getData('cart'));
                                     <input type="hidden" name="user_id" value="<?php
                                     if (isset($_SESSION["useruid"])) {
                                         echo $_SESSION["userid"] ?? 1;
+                                    }else{
+                                        echo 1;
                                     }?>">
                                     <?php
                                     if (in_array($item['item_id'], $in_cart ?? [])){

@@ -145,7 +145,7 @@
 						<i class="fa fa-cog"></i>
 					</span>
                     </div>
-                    <input type=text" class="form-control" name="description" placeholder="Description of the product" required="required">
+                    <input type="text" class="form-control" name="description" placeholder="Description of the product" required="required">
                 </div>
             </div>
             <div class="form-group">

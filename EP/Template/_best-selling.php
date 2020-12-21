@@ -36,9 +36,11 @@
                             <input type="hidden" name="user_id" value="<?php
                                 if (isset($_SESSION["useruid"])) {
                                     echo $_SESSION["userid"] ?? 1;
+                                }else{
+                                    echo 1;
                                 }?>">
                                 <?php
-                                if(in_array($item['item_id'],$Cart->getCartId($product->getData('cart'))??[])){
+                                if(in_array($item['item_id'],$Cart->getCartId($product ->getDataCurrent('cart', $_SESSION["userid"] ?? 1))??[])){
                                     echo '<button type="submit" disabled class="btn btn-success font-size-12">In The Cart</button>';
                                 }else{
                                     echo '<button type="submit" name="best_selling_submit" class="btn btn-warning font-size-12">Add to Cart</button>';
