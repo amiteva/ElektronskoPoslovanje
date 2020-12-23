@@ -21,6 +21,17 @@ class Product
 
         return $resultArray;
     }
+    public function getActiveProducts($table = 'product'){
+        $result = $this->db->con->query("SELECT * FROM {$table} WHERE item_status='1'");
+
+        $resultArray = array();
+
+        while($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $item;
+        }
+
+        return $resultArray;
+    }
 
     public function getDataCurrent($table = 'product', $user){
         $result = $this->db->con->query("SELECT * FROM {$table} WHERE user_id=$user");

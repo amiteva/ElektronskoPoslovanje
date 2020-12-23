@@ -8,6 +8,10 @@ if(isset($_POST['submit']))
     $pwdRepeat = $_POST["pwdrepeat"];
     $status=1;
     $rolechecked = 2;
+    $street = $_POST["street"];
+    $houseNo = $_POST["houseNo"];
+    $post = $_POST["post"];
+    $postNo = $_POST["postNo"];
 
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
@@ -40,7 +44,7 @@ if(isset($_POST['submit']))
 
     if ($result['success']) {
         //If the user has checked the Captcha box
-        if(emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) !== false){
+        if(emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat, $street, $houseNo, $post, $postNo) !== false){
             header("location: ../../signup.php?error=emptyinput");
             exit();
         }
@@ -60,7 +64,7 @@ if(isset($_POST['submit']))
             exit();
         }
 
-        createUser($conn, $name, $email, $username, $pwd, $rolechecked);
+        createUser($conn, $name, $email, $username, $pwd, $rolechecked, $street, $houseNo, $post, $postNo);
 
     } else {
         // If the CAPTCHA box wasn't checked

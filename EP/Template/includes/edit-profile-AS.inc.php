@@ -7,16 +7,11 @@ if(isset($_POST["submit"])){
     $pwd = $_POST["pwd"];
     $pwdRepeat = $_POST["pwdrepeat"];
     $userId = $_POST["userID"];
-    $street=$_POST["street"];
-    $houseNo=$_POST["houseNo"];
-    $post=$_POST["post"];
-    $postNo=$_POST["postNo"];
-
 
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
 
-    if(emptyInputEditProfile($name, $email, $username, $pwd, $pwdRepeat, $street, $houseNo, $post, $postNo) !== false){
+    if(emptyInputEditProfileAS($name, $email, $username, $pwd, $pwdRepeat) !== false){
         header("location: ../../editProfile.php?error=emptyinput");
         exit();
     }
@@ -31,7 +26,7 @@ if(isset($_POST["submit"])){
         exit();
     }
 
-    updateCustomer($conn, $name, $email, $username, $pwd, $userId, $street, $houseNo, $post, $postNo);
+    updateCustomerAS($conn, $name, $email, $username, $pwd, $userId);
 
 }
 else{

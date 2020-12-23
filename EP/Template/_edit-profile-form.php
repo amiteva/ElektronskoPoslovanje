@@ -90,6 +90,9 @@
         .editProfile-form .fa-cog {
             font-size: 18px;
         }
+        .editProfile-form .fa-map-marked-alt{
+            font-size: 18px;
+        }
     </style>
 
 
@@ -126,6 +129,46 @@
 					</span>
                     </div>
                     <input type="text" class="form-control" name="uid" value="<?php echo $_SESSION['useruid'] ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="fa fa-map-marked-alt"></span>
+					</span>
+                    </div>
+                    <input type="text" class="form-control" name="street" value="<?php echo $_SESSION['street'] ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="fa fa-map-marked-alt"></span>
+					</span>
+                    </div>
+                    <input type="number" class="form-control" name="houseNo" value="<?php echo $_SESSION['houseNo'] ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="fa fa-map-marked-alt"></span>
+					</span>
+                    </div>
+                    <input type="text" class="form-control" name="post" value="<?php echo $_SESSION['post'] ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="fa fa-map-marked-alt"></span>
+					</span>
+                    </div>
+                    <input type="number" class="form-control" name="postNo" value="<?php echo $_SESSION['postNo'] ?>">
                 </div>
             </div>
             <div class="form-group">

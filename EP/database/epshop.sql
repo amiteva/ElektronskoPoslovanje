@@ -21,7 +21,8 @@ CREATE TABLE `product` (
     `item_nr` int(11) NOT NULL DEFAULT 0,
     `item_image` varchar(255) NOT NULL,
     `item_register` datetime DEFAULT NOW(),
-    `item_desc` varchar(255) NOT NULL
+    `item_desc` varchar(255) NOT NULL,
+    `item_status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -51,7 +52,11 @@ CREATE TABLE `users` (
     `usersUid` varchar(128) NOT NULL,
     `usersPwd` varchar(128) NOT NULL,
     `userStatus` int(11) NOT NULL DEFAULT 1, /*0-innactive, 1-active*/
-    `userRole` int(11) NOT NULL /*0-admin, 1-prodajalec, 2-stranka, 3-guest*/
+    `userRole` int(11) NOT NULL, /*0-admin, 1-prodajalec, 2-stranka, 3-guest*/
+    `street` varchar(255) DEFAULT NULL,
+    `houseNo` int(11) DEFAULT NULL,
+    `post` varchar(255) DEFAULT NULL,
+    `postNo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `users` (`usersId`, `usersName`, `usersEmail`, `usersUid`, `usersPwd`, `userRole`) VALUES
@@ -85,7 +90,7 @@ CREATE TABLE `cartItemMatch` (
          ON UPDATE RESTRICT,
      CONSTRAINT `fk_cartItemMatch_product`
          FOREIGN KEY (item_id) REFERENCES product(item_id)
-             ON DELETE CASCADE
-             ON UPDATE RESTRICT
+         ON DELETE CASCADE
+         ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

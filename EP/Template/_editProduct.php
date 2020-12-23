@@ -158,13 +158,22 @@ foreach($product->getData() as $pro):
                     <div class="form-group">
                         <button type="submit" name="submit" class="btn btn-primary btn-lg">Edit the Product</button>
                     </div>
-                </form>
-                <form action="Template/includes/edit-products-info.inc.php" method="post">
-                    <input type="hidden" class="form-control" name="itemid" value="<?php echo $product_id ?>">
-                    <div class="form-group">
-                        <button type="submit" name="delete" class="btn btn-primary btn-lg">Delete product</button>
-                    </div>
-                </form>
+                <?php if ($pro['item_status'] == 1){?>
+                    <form action="Template/includes/edit-products-info.inc.php" method="post">
+                        <input type="hidden" class="form-control" name="itemid" value="<?php echo $product_id ?>">
+                        <div class="form-group">
+                            <button type="submit" name="deactivate" class="btn btn-primary btn-lg">Deactivate Product</button>
+                        </div>
+                    </form>
+                <?php }else{?>
+                    <form action="Template/includes/edit-products-info.inc.php" method="post">
+                        <input type="hidden" class="form-control" name="itemid" value="<?php echo $product_id ?>">
+                        <div class="form-group">
+                            <button type="submit" name="activate" class="btn btn-primary btn-lg">Activate Product</button>
+                        </div>
+                    </form>
+                <?php } ?>
+                <div class="text-center" style="color: red">
                 <?php
                 if(isset($_GET["error"])){
                     if($_GET["error"] == "emptyinput"){
