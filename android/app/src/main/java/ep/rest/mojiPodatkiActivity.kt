@@ -3,6 +3,7 @@ package ep.rest
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_moji_podatki.*
 
@@ -12,11 +13,15 @@ class mojiPodatkiActivity : AppCompatActivity() {
         setContentView(R.layout.activity_moji_podatki)
 
         val ali = 1
-        val ime = findViewById<TextView>(R.id.upIme)
+        val ime = findViewById<EditText>(R.id.upIme)
         val priimek = findViewById<TextView>(R.id.upPriimek)
         val naslov = findViewById<TextView>(R.id.address)
         val mail = findViewById<TextView>(R.id.mail)
-        val geslo = findViewById<TextView>(R.id.password)
+
+        val imeN = findViewById<TextView>(R.id.textView4)
+        val priimekN = findViewById<TextView>(R.id.textView5)
+        val naslovN = findViewById<TextView>(R.id.textView6)
+        val mailN = findViewById<TextView>(R.id.textView7)
 
 
         // Nazaj:
@@ -30,8 +35,10 @@ class mojiPodatkiActivity : AppCompatActivity() {
         button.setOnClickListener{
             //val intent = Intent(this, MainActivity::class.java)
             // Nove vrednosti:
-            ime.text = ime.text.toString()
-            priimek.text = priimek.text.toString()
+            imeN.text = ime.text.toString()
+            priimekN.text = priimek.text.toString()
+            naslovN.text = naslov.text.toString()
+            mailN.text = mail.text.toString()
 
             intent.putExtra("ali2", ali)
             //startActivity(intent)

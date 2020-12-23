@@ -27,10 +27,15 @@ class prijavaActivity : AppCompatActivity() {
         btnLogin.setOnClickListener{
             validate(uporabnik.text.toString(), geslo.text.toString())
         }
+
+        trgovina.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun validate(userName: String, userPassword: String){
-        if((userName == "admin") && (userPassword == "123")) {
+        if((userName == "marko") && (userPassword == "123")) {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("odjava", odj)
             intent.putExtra("ali", ali)
