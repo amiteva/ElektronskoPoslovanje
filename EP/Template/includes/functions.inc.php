@@ -1,7 +1,7 @@
 <?php
 
-function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
-    if(empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)){
+function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat,  $street, $houseNo, $post, $postNo){
+    if(empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat) || empty($street)|| empty($houseNo)|| empty($post)|| empty($postNo)){
         $result = true;
     }
     else {
@@ -54,8 +54,8 @@ function uidExists($conn, $username, $email){
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn, $name, $email, $username, $pwd, $rolechecked){
-    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, userRole) VALUES (?, ?, ?, ?, ?);";
+function createUser($conn, $name, $email, $username, $pwd, $rolechecked, $street, $houseNo, $post, $postNo){
+    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, userRole, street, houseNo, post, postNo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../../signup.php?error=stmtfailed");
@@ -64,14 +64,14 @@ function createUser($conn, $name, $email, $username, $pwd, $rolechecked){
     else{
         $hashedPWD = password_hash($pwd, PASSWORD_DEFAULT);
 
-        mysqli_stmt_bind_param($stmt, "sssss", $name, $email, $username, $hashedPWD, $rolechecked);
+        mysqli_stmt_bind_param($stmt, "ssssssisi", $name, $email, $username, $hashedPWD, $rolechecked, $street, $houseNo, $post, $postNo);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
         header("location: ../../signup.php?error=none");
     }
 }
-function updateUser($conn, $name, $email, $username, $pwd, $currentId){ //treba za sekoj parametar da proveris posebno dali ima nesto pisano i da updejtnes ako da
+function updateUser($conn, $name, $email, $username, $pwd, $currentId){
 
     $sql = "UPDATE users SET usersName=?, usersEmail=?, usersUid=?, usersPwd=? WHERE usersId='$currentId'";
 
@@ -91,7 +91,26 @@ function updateUser($conn, $name, $email, $username, $pwd, $currentId){ //treba 
     }
 }
 
-function updateCustomer($conn, $name, $email, $username, $pwd, $currentId){ //treba za sekoj parametar da proveris posebno dali ima nesto pisano i da updejtnes ako da
+function updateCustomer($conn, $name, $email, $username, $pwd, $currentId, $street, $houseNo, $post, $postNo){ //sekoj user sam si go editira profilot
+
+    $sql = "UPDATE users SET usersName=?, usersEmail=?, usersUid=?, usersPwd=? , street=?, houseNo=?, post=?, postNo=? WHERE usersId='$currentId'";
+
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../../editProfile.php?error=stmtfailed");
+        exit();
+    }
+    else{
+        $hashedPWD = password_hash($pwd, PASSWORD_DEFAULT);
+
+        mysqli_stmt_bind_param($stmt, "sssssisi", $name, $email, $username, $hashedPWD, $street, $houseNo, $post, $postNo);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        header("location: logout.inc.php");
+    }
+}
+function updateCustomerAS($conn, $name, $email, $username, $pwd, $currentId){ //koga admin ili seller si go editira profilot
 
     $sql = "UPDATE users SET usersName=?, usersEmail=?, usersUid=?, usersPwd=? WHERE usersId='$currentId'";
 
@@ -110,7 +129,7 @@ function updateCustomer($conn, $name, $email, $username, $pwd, $currentId){ //tr
         header("location: logout.inc.php");
     }
 }
-function updateCus($conn, $name, $email, $username, $pwd, $currentId){ //treba za sekoj parametar da proveris posebno dali ima nesto pisano i da updejtnes ako da
+function updateCus($conn, $name, $email, $username, $pwd, $currentId){
 
     $sql = "UPDATE users SET usersName=?, usersEmail=?, usersUid=?, usersPwd=? WHERE usersId='$currentId'";
 
@@ -130,7 +149,7 @@ function updateCus($conn, $name, $email, $username, $pwd, $currentId){ //treba z
     }
 }
 
-function deactivateUser($conn, $currentId){ //treba za sekoj parametar da proveris posebno dali ima nesto pisano i da updejtnes ako da
+function deactivateUser($conn, $currentId){
 
     $sql = "UPDATE users SET userStatus='0' WHERE usersId='$currentId'";
 
@@ -147,7 +166,7 @@ function deactivateUser($conn, $currentId){ //treba za sekoj parametar da prover
     }
 }
 
-function deactivateCustomer($conn, $currentId){ //treba za sekoj parametar da proveris posebno dali ima nesto pisano i da updejtnes ako da
+function deactivateCustomer($conn, $currentId){
 
     $sql = "UPDATE users SET userStatus='0' WHERE usersId='$currentId'";
 
@@ -164,7 +183,7 @@ function deactivateCustomer($conn, $currentId){ //treba za sekoj parametar da pr
     }
 }
 
-function activateCustomer($conn, $currentId){ //treba za sekoj parametar da proveris posebno dali ima nesto pisano i da updejtnes ako da
+function activateCustomer($conn, $currentId){
 
     $sql = "UPDATE users SET userStatus='1' WHERE usersId='$currentId'";
 
@@ -181,7 +200,7 @@ function activateCustomer($conn, $currentId){ //treba za sekoj parametar da prov
     }
 }
 
-function activateUser($conn, $currentId){ //treba za sekoj parametar da proveris posebno dali ima nesto pisano i da updejtnes ako da
+function activateUser($conn, $currentId){
 
     $sql = "UPDATE users SET userStatus='1' WHERE usersId='$currentId'";
 
@@ -198,9 +217,25 @@ function activateUser($conn, $currentId){ //treba za sekoj parametar da proveris
     }
 }
 
-function deleteProduct($conn, $currentId){ //treba za sekoj parametar da proveris posebno dali ima nesto pisano i da updejtnes ako da
+function deactivateProduct($conn, $currentId){
 
-    $sql = "DELETE FROM product WHERE item_id='$currentId'";
+    $sql = "UPDATE product SET item_status='0' WHERE item_id='$currentId'";
+
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../../editProductList.php?error=stmtfailed");
+        exit();
+    }
+    else{
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        header("location: ../../editProductList.php");
+    }
+}
+function activateProduct($conn, $currentId){
+
+    $sql = "UPDATE product SET item_status='1' WHERE item_id='$currentId'";
 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -302,7 +337,16 @@ function emptyInputLogin($username, $pwd){
     }
     return $result;
 }
-function emptyInputEditProfile($name, $email, $username, $pwd, $pwdRepeat){
+function emptyInputEditProfile($name, $email, $username, $pwd, $pwdRepeat, $street, $houseNo, $post, $postNo){
+    if(empty($name) && empty($email) && empty($username) && empty($pwd) && empty($pwdRepeat) && empty($street) && empty($houseNo) && empty($post) && empty($postNo)){
+        $result = true;
+    }
+    else {
+        $result = false;
+    }
+    return $result;
+}
+function emptyInputEditProfileAS($name, $email, $username, $pwd, $pwdRepeat){
     if(empty($name) && empty($email) && empty($username) && empty($pwd) && empty($pwdRepeat)){
         $result = true;
     }
@@ -338,6 +382,10 @@ function loginUser($conn, $username, $pwd){
         $_SESSION["username"] = $uidExists["usersName"];
         $_SESSION["useremail"] = $uidExists["usersEmail"];
         $_SESSION["userrole"] = $uidExists["userRole"];
+        $_SESSION["street"]=$uidExists["street"];
+        $_SESSION["houseNo"]=$uidExists["houseNo"];
+        $_SESSION["post"]=$uidExists["post"];
+        $_SESSION["postNo"]=$uidExists["postNo"];
         if($_SESSION["userrole"]==0)
             header("location: ../../adminHome.php");
         else if ($_SESSION["userrole"]==1)

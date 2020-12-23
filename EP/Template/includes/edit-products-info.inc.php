@@ -16,7 +16,7 @@ if(isset($_POST["submit"])){
 
 }
 
-if(isset($_POST["delete"])){
+if(isset($_POST["deactivate"])){
 
     $item_id = $_POST["itemid"];
 
@@ -25,7 +25,20 @@ if(isset($_POST["delete"])){
     require_once 'functions.inc.php';
 
 
-    deleteProduct($conn, $item_id);
+    deactivateProduct($conn, $item_id);
+
+}
+
+if(isset($_POST["activate"])){
+
+    $item_id = $_POST["itemid"];
+
+
+    require_once 'dbh.inc.php';
+    require_once 'functions.inc.php';
+
+
+    activateProduct($conn, $item_id);
 
 }
 

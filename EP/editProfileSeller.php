@@ -4,7 +4,7 @@ include('sellerHeader.php');
 ?>
 
 <?php
-include('./Template/_edit-profile-form.php');
+include('./Template/_edit-profile-AS-form.php');
 ?>
 
 <?php

@@ -58,6 +58,6 @@ if(isset($_POST["act"])){
 }
 
 else{
-    header("location: ../../editCustomerList.php");
+    header("location: ../../editCustomersList.php");
     exit();
 }
