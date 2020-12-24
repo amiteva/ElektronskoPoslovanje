@@ -54,7 +54,7 @@ session_start();
                     <a class="nav-link" href="editProductList.php">Edit Products</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link" href="orders.php">Orders</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="addCustomer.php">Add Customer</a>

@@ -94,3 +94,8 @@ CREATE TABLE `cartItemMatch` (
          ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `orders` (
+                        `order_id` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                        `item_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
