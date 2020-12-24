@@ -73,8 +73,10 @@
                     <h6 class="font-primary font-size-12 text-success py-3"><i class="fas fa-check"></i> You order is eligible for free delivery</h6>
                     <div class="border-top py-4">
                         <h5 class="font-primary font-size-20">Subtotal <?php echo isset($subTotal) ? count($subTotal): 0; ?> item(s): &nbsp;<span class="text-danger"><span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $Cart->getSum($subTotal): 0 ?></span> <i class="fas fa-euro-sign"></i></span></h5>
-                        <h5 class="font-primary font-size-20">Subtotal <?php echo isset($subTotal) ? count($subTotal): 0; ?> item(s): &nbsp;<span class="text-danger"><span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $Cart->getSum($subTotal): 0 ?></span> <i class="fas fa-euro-sign"></i></span></h5>
-                        <button class="btn btn-warning mt-3">Proceed to buy</button>
+                        <form action="Template/includes/orders.inc.php" method="post">
+                            <input type="hidden" class="form-control" name="userID" value="<?php echo $_SESSION['userid'] ?? 1 ?>">
+                            <button type="submit" name="submit" class="btn btn-warning mt-3">Proceed to buy</button>
+                        </form>
                     </div>
                 </div>
             </div>

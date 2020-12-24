@@ -284,6 +284,40 @@ function createCustomer($conn, $name, $email, $username, $pwd, $role){
         header("location: ../../addCustomer.php?error=none");
     }
 }
+
+function removeFromCart($conn, $id){
+    $sql = "DELETE FROM cart WHERE  user_id='$id';";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../../index.php?error=stmtfailed");
+        exit();
+    }
+    else{
+
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        header("location: ../../index.php");
+    }
+}
+
+function bFromCart($conn, $id){
+    $sql = "INSERT INTO orders (item_name) SELECT item_id FROM cart WHERE user_id='$id';";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../../index.php?error=stmtfailed");
+        exit();
+    }
+    else{
+
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        header("location: ../../index.php");
+    }
+}
+
+
 function addProduct($conn, $brand, $name, $price, $msrp, $description){
     $sql = "INSERT INTO product (item_brand, item_name, item_price, item_msrp, item_desc) VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
